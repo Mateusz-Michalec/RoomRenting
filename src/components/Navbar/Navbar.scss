@@ -1,0 +1,36 @@
+@import "../../assets/scss/variables.scss";
+
+// Mobile
+
+.navbar {
+  transition: $transition-slow;
+  transform: translateY(-100%);
+
+  &.navbar-scrolled {
+    background-color: white;
+  }
+}
+
+.navbar-nav {
+  position: absolute;
+  background-color: white;
+  width: 100%;
+  height: calc(100vh - 57px);
+  top: 57px;
+  left: 160%;
+  transform: translateX(-50%);
+  transition: $transition-slow;
+
+  .nav-item {
+    letter-spacing: $ls-sm;
+    transition: $transition-slow;
+
+    &:hover {
+      color: $dark-green;
+    }
+  }
+
+  &.active {
+    left: 50%;
+  }
+}

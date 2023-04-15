@@ -1,0 +1,145 @@
+@import "./assets/scss/variables.scss";
+
+*,
+::after,
+::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  background-color: $gray-1;
+}
+
+#root {
+  overflow-x: hidden;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+a {
+  color: unset;
+  text-decoration: none;
+}
+
+p {
+  letter-spacing: 1px;
+  line-height: 1.6rem;
+}
+
+h2 {
+  font-family: "Amatic SC", cursive;
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+.brand {
+  font-family: "Merienda", cursive;
+  letter-spacing: $ls-sm;
+  font-weight: 700;
+}
+
+.bg-white-1 {
+  background-color: $white-1;
+}
+
+.icon-big {
+  font-size: $icon-big;
+}
+
+.btn-outline-gd {
+  border: 1px solid whitesmoke;
+  padding: 0.5rem 1rem;
+  color: whitesmoke;
+  transition: $transition-fast;
+  letter-spacing: 2px;
+
+  &:hover {
+    background-color: whitesmoke;
+    color: $dark-green;
+  }
+}
+
+.btn-outline-reversed {
+  @extend .btn-outline-gd;
+  border-color: black;
+  color: black;
+
+  &:hover {
+    background-color: black;
+    color: whitesmoke;
+  }
+}
+
+// Animations
+.fade-in {
+  animation: fade-in 0.5s ease-in-out 0s 1 normal forwards;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fade-in-x {
+  animation: fade-in-x 1s ease-in-out 0s 1 normal forwards;
+}
+
+@keyframes fade-in-x {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.fade-in-y {
+  animation: fade-in-y 1s ease-in-out 0s 1 normal forwards;
+}
+
+@keyframes fade-in-y {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+.slide-in-y {
+  animation: slide-in-y 1s ease-in-out 0s 1 normal forwards;
+}
+
+@keyframes slide-in-y {
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+.fade-in-hero {
+  animation: fade-in-hero 1s ease-in-out 0s 1 normal forwards;
+}
+
+@keyframes fade-in-hero {
+  0% {
+    opacity: 0;
+    top: 60%;
+  }
+  100% {
+    opacity: 1;
+    top: calc(50% + 31.5px);
+  }
+}
