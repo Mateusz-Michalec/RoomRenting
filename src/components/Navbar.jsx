@@ -9,6 +9,11 @@ export default function Navbar() {
     setIsMenu(false);
   }
 
+  function scrollToBottom() {
+    hideMenu();
+    window.scrollTo(0, document.body.scrollHeight);
+  }
+
   useEffect(() => {
     isMenu
       ? (document.body.style.overflow = "hidden")
@@ -21,6 +26,7 @@ export default function Navbar() {
         ref={navRef}
         className="
         navbar fade-in shadow px-3 fixed-top z-3"
+        style={{ height: "60px" }}
       >
         <Link to="/" className="brand">
           GórskaDolina
@@ -31,13 +37,17 @@ export default function Navbar() {
           aria-expanded="false"
           aria-controls="menu"
           onClick={() => setIsMenu((prev) => !prev)}
+          className="d-lg-none"
         >
-          <i className={`bi ${isMenu ? "bi-x-lg" : "bi-list"} fs-1`}></i>
+          <i
+            className={`bi ${isMenu ? "bi-x-lg" : "bi-list"}`}
+            style={{ fontSize: "25px" }}
+          ></i>
         </button>
         <ul
           className={`${
             isMenu ? "active" : ""
-          } navbar-nav shadow-lg text-center d-flex flex-column justify-content-evenly`}
+          } navbar-nav text-center d-flex flex-column flex-lg-row justify-content-evenly justify-content-lg-center gap-lg-5`}
         >
           <li className="nav-item">
             <Link onClick={hideMenu} to="/">
@@ -59,10 +69,8 @@ export default function Navbar() {
               Galeria
             </Link>
           </li>
-          <li className="nav-item">
-            <Link onClick={hideMenu} to="/kontakt">
-              Kontakt
-            </Link>
+          <li className="nav-item" onClick={() => scrollToBottom()}>
+            <span style={{ cursor: "pointer" }}>Kontakt</span>
           </li>
         </ul>
       </nav>

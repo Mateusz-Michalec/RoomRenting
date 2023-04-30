@@ -4,6 +4,7 @@ import ImgModal from "../components/ImgModal";
 import useDynamicRefs from "../hooks/useDynamicRefs";
 import { useInView } from "../hooks/useInView";
 import { showElement } from "../utils/animate";
+import Footer from "../components/Footer";
 
 export default function Gallery() {
   const imagesRefs = useDynamicRefs(images);
@@ -20,8 +21,8 @@ export default function Gallery() {
           id={image.id}
           ref={imagesRefs[i]}
           key={image.id}
-          className="w-100 col-12 hidden-x-right"
-          style={{ objectFit: "cover", height: "10rem", cursor: "pointer" }}
+          className="col hidden-x-right"
+          style={{ objectFit: "cover", height: "20rem", cursor: "pointer" }}
           src={image.img}
           alt={image.imgAlt}
           loading="lazy"
@@ -53,13 +54,16 @@ export default function Gallery() {
           }}
         />
       ) : null}
-      <section className="p-5 mt-5">
-        <header className="mb-4 fade-in">
+      <section className="p-5 mt-5 container-fluid">
+        <header className="mb-5 fade-in">
           <h2 className="mb-3">Galeria zdjęć</h2>
           <p>Poznaj Górską Dolinę oraz jej okolice.</p>
         </header>
-        <section className="row gy-4">{renderGallery()}</section>
+        <section className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-5">
+          {renderGallery()}
+        </section>
       </section>
+      <Footer />
     </>
   );
 }

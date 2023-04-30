@@ -6,6 +6,7 @@ import IconText from "../components/IconText";
 import Footer from "../components/Footer";
 import { useInView } from "../hooks/useInView";
 import { showElement, showGroupElements } from "../utils/animate";
+import { Link } from "react-router-dom";
 
 export default function Attractions() {
   const introText = useRef();
@@ -41,7 +42,7 @@ export default function Attractions() {
           <h1 className="header">Atrakcje Górskiej Doliny</h1>
           <p>Jedno miejsce, wiele możliwości</p>
           <button type="button" className="btn-outline-gd">
-            Galeria zdjęć
+            <Link to="/galeria">Galeria zdjęć</Link>
           </button>
           <i className="bi bi-chevron-compact-down arrow-down mt-5 d-block"></i>
         </header>

@@ -5,6 +5,7 @@ import { showElement } from "../utils/animate";
 import { roomsData } from "../data/rooms";
 import useDynamicRefs from "../hooks/useDynamicRefs";
 import ImgModal from "../components/ImgModal";
+import { images } from "../data/gallery";
 
 export default function RoomCategory({ category }) {
   const getRooms = (roomCategory) =>
@@ -14,8 +15,8 @@ export default function RoomCategory({ category }) {
 
   const getMainImages = () => {
     const images = [];
-    rooms.forEach((room) => {
-      import(`../assets/img/room-${room.imgId}-${room.id}.jpg`).then((src) =>
+    rooms.forEach((room, i) => {
+      import(`../assets/img/room-${room.imgId}-${i}.jpg`).then((src) =>
         images.push(src.default)
       );
     });
@@ -27,7 +28,6 @@ export default function RoomCategory({ category }) {
   const roomsRefs = useDynamicRefs(rooms);
   const intersection = useInView(roomsRefs, roomsRefs.length);
 
-  console.log(modalData);
   useEffect(() => {
     rooms.forEach((room) => {
       if (intersection[room.id]) showElement(roomsRefs[room.id]);
@@ -38,15 +38,16 @@ export default function RoomCategory({ category }) {
     <>
       {modalData ? (
         <ImgModal
-          roomId={modalData.id}
+          rooms={rooms}
           img={modalData.mainImg}
+          imgId={modalData.imgId}
           closeModal={() => {
             document.body.style.overflow = "auto";
             setModalData(null);
           }}
         />
       ) : null}
-      <section>
+      <section className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-5">
         {rooms.map((room, i) => (
           <RoomCard
             key={room.id}
@@ -59,7 +60,7 @@ export default function RoomCategory({ category }) {
             price={room.price}
             onClick={() => {
               document.body.style.overflow = "hidden";
-              setModalData({ id: room.id, mainImg: mainImages[i] });
+              setModalData({ mainImg: mainImages[i], imgId: room.imgId });
             }}
           />
         ))}

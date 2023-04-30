@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 export default function useIsMobile() {
-  const getIsDesktop = () => window.innerWidth >= 962;
+  const getIsDesktop = () => window.innerWidth >= 992;
 
   const [isDesktop, setIsDesktop] = useState(getIsDesktop);
 
